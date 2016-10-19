@@ -1,1 +1,1 @@
-include ':app', ':facebook-android-sdk-4.16.0', ':firebase-client-android-2.5.2'
+include ':app'
