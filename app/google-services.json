@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1057548282541",
+    "project_id": "firebase-stepbystep"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057548282541:android:6bed8232086506a5",
+        "android_client_info": {
+          "package_name": "com.oli.stepbystep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057548282541-jcoen75b5s51obftf2r27pf64qufd6qo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oli.stepbystep",
+            "certificate_hash": "646C4B7A9F32A1A61BD127554265AEBEAF74CC03"
+          }
+        },
+        {
+          "client_id": "1057548282541-nmuc2g0cia80c8bp40sdjmksiv9bo0tk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSdrdKqtEfgpyRhcexHXblu-1lDCjg3Cg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
