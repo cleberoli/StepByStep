@@ -1,7 +1,9 @@
 {
   "project_info": {
     "project_number": "1057548282541",
-    "project_id": "firebase-stepbystep"
+    "firebase_url": "https://fir-stepbystep.firebaseio.com",
+    "project_id": "firebase-stepbystep",
+    "storage_bucket": "firebase-stepbystep.appspot.com"
   },
   "client": [
     {
@@ -21,6 +23,10 @@
           }
         },
         {
+          "client_id": "1057548282541-ah6gnp90p64hg946et0mvmcj6i2gfsab.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "1057548282541-nmuc2g0cia80c8bp40sdjmksiv9bo0tk.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -35,11 +41,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057548282541-ah6gnp90p64hg946et0mvmcj6i2gfsab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }
