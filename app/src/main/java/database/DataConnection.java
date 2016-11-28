@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,9 +36,50 @@ public class DataConnection {
     private static DatabaseReference user = mRootRef.child("user");
 
     private static String key;
+    private static HashMap<String, Object> result;
+    private static ArrayList<String> keys;
 
     public static void temp2() {
         Log.e("CHILDADDED", key);
+    }
+
+    public static ArrayList<String> retrieve() {
+        return keys;
+    }
+
+    public static void query(byte root, String field, String parameter) {
+        DatabaseReference databaseReference = getInstance(root).child(parameter);
+        Query query = databaseReference;
+
+        result = new HashMap<>();
+
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                keys.add(dataSnapshot.getKey());
+                Log.e("CHILD", dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public static void temp() {
@@ -124,15 +166,15 @@ public class DataConnection {
     }
 
     public static void updateChild(byte root, Map<String, Object> childValues) {
+        DatabaseReference databaseReference = getInstance(root);
+
         if (root == DataConnection.USER || root == DataConnection.COMPONENT_SBS || root == DataConnection.FAVORITE_LIST || root == DataConnection.SHOPPING_LIST) {
-            DatabaseReference dr = getInstance(root);
-            dr.updateChildren(childValues);
+            databaseReference.updateChildren(childValues);
         } else {
             Map<String, Object> childUpdates = new HashMap<>();
-            DatabaseReference dr = getInstance(root);
-            String key = dr.push().getKey();
+            String key = databaseReference.push().getKey();
             childUpdates.put(key, childValues);
-            dr.updateChildren(childUpdates);
+            databaseReference.updateChildren(childUpdates);
         }
     }
 

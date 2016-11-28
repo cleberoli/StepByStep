@@ -31,21 +31,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.oli.stepbystep.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import controllers.CreateUser;
-import database.DataConnection;
-import objects.ComponentSbs;
-import objects.FavoriteList;
-import objects.Sbs;
-import objects.ShoppingList;
-import objects.TypeSbs;
 import objects.User;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
 
-    private boolean logged = false;
     private static int RC_SIGN_IN = 0;
     private static String TAG = "LOGIN_ACTIVITY";
 
@@ -103,43 +95,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         findViewById(R.id.facebookButton).setOnClickListener(this);
         findViewById(R.id.googleButton).setOnClickListener(this);
-
-        ArrayList<String> al = new ArrayList<>();
-        ShoppingList s = new ShoppingList();
-        s.setUser("AEeBDq2vAQXFVe7nAMb6r0D4tJp1");
-        al.add("-KXbgHVoBpgl3Xzrax45");
-        al.add("-KXbgHVpcaA4-yGuiunY");
-        al.add("-KXbgHVq3wKm7jA2HmeB");
-        al.add("-KXbgHVra5vIryz7LPok");
-        s.setComponents(al);
-        s.addShoppingList();
-
-
-//        TypeSbs t = new TypeSbs("soup");
-//        t.addTypeSbs();
- /*       ComponentItem c = new ComponentItem("potato");
-        c.addComponentItem();
-        c = new ComponentItem("celery");
-        c.addComponentItem();
-        c = new ComponentItem("onion");
-        c.addComponentItem();
-        c = new ComponentItem("ham");
-        c.addComponentItem();
-        c = new ComponentItem("water");
-        c.addComponentItem();
-        c = new ComponentItem("chicken");
-        c.addComponentItem();
-        c = new ComponentItem("salt");
-        c.addComponentItem();
-        c = new ComponentItem("pepper");
-        c.addComponentItem();
-        c = new ComponentItem("buttery");
-        c.addComponentItem();
-        c = new ComponentItem("flour");
-        c.addComponentItem();
-        c = new ComponentItem("milk");
-        c.addComponentItem();*/
-        DataConnection.temp();
     }
 
     @Override
@@ -167,7 +122,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             if (result.isSuccess()) {
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuth(null, account);
-                logged = true;
             } else
                 Log.d(TAG, "Google Login Failed");
         }
@@ -180,17 +134,22 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.googleButton:
-                googleSignIn();
-                break;
-            case R.id.facebookButton:
-                facebookSignIn();
-                break;
+        if (mAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("userid", mAuth.getCurrentUser().getUid());
+            startActivity(intent);
+        } else {
+            switch (view.getId()) {
+                case R.id.googleButton : {
+                    googleSignIn();
+                    break;
+                }
+                case R.id.facebookButton : {
+                    facebookSignIn();
+                    break;
+                }
+            }
         }
-
-        Intent intent = new Intent(this, RecipeList.class);
-        startActivity(intent);
     }
 
     private void firebaseAuth(AccessToken token, GoogleSignInAccount account) {

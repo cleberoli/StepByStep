@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.oli.stepbystep.interfaces.MainActivity"
+    android:background="#fef285">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbsSearch"
+/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+
+            <Button
+                android:id="@+id/shoppingList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="shoping"
+                android:background="#c81f46"
+                android:textColor="#ffffff"
+                android:layout_alignParentTop="true"
+               android:layout_weight="1"/>
+
+
+            <Button
+                android:text="favorite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/favoriteList"
+                android:background="#c81f46"
+                android:textColor="#ffffff"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/shoppingList"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
